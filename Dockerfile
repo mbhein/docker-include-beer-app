@@ -1,7 +1,7 @@
 # Build Docker container to run include-beer flask app
 
-DESCRIPTION Docker container to run include-beer flask app
 FROM resin/raspberry-pi-python:3.6-slim
+
 LABEL maintainer="github.com/mbhein"
 LABEL image_version="1.0"
 LABEL description="Docker container to run include-beer flask app"
