@@ -9,3 +9,12 @@ script:
 - docker build -t mbhein/include-beer-app .
 # test image
 - docker run mbhein/include-beer-app --version
+# push image
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+    TAG=v0.1
+    docker tag mbhein/include-beer-app mbhein/include-beer-app:$TAG
+    docker push mbhein/include-beer-app:$TAG
+    docker push mbhein/include-beer-app
+  fi
