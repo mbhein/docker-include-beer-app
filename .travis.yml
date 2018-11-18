@@ -13,7 +13,7 @@ script:
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-    TAG=grep image_version Dockerfile | cut -d '"' -f2
+    TAG=$(grep image_version Dockerfile | cut -d '"' -f2)
     docker tag mbhein/include-beer-app mbhein/include-beer-app:$TAG
     docker push mbhein/include-beer-app:$TAG
     docker push mbhein/include-beer-app
